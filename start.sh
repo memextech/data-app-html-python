@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Start script for local FastAPI development
+
+set -e  # Exit on error
+
+# Set default port
+APP_PORT=${APP_PORT:-3001}
+
+echo "Starting FastAPI + Static HTML App..."
+
+# Sync dependencies from pyproject.toml
+echo "Syncing dependencies..."
+uv sync
+
+# Start local development server
+echo "Starting local dev server on http://0.0.0.0:${APP_PORT}"
+echo ""
+uv run uvicorn app_local:app --host 0.0.0.0 --port ${APP_PORT} --reload

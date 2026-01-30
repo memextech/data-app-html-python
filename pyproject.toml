@@ -1,0 +1,11 @@
+[project]
+name = "data-app"
+version = "0.1.0"
+description = "Data App"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.110",
+    "modal>=0.60",
+    "uvicorn>=0.27",
+]

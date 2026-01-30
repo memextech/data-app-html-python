@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "Bash(tree:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:docs.streamlit.io)",
+      "Bash(cat:*)"
+    ]
+  }
+}
