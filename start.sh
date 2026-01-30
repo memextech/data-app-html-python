@@ -16,4 +16,4 @@ uv sync
 # Start local development server
 echo "Starting local dev server on http://0.0.0.0:${APP_PORT}"
 echo ""
-uv run uvicorn app_local:app --host 0.0.0.0 --port ${APP_PORT} --reload
+uv run uvicorn app:asgi --host 0.0.0.0 --port ${APP_PORT} --reload
