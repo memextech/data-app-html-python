@@ -1,1 +1,1 @@
-static
+STATIC_FASTAPI
