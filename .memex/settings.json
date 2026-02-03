@@ -1,6 +1,6 @@
 {
   "enabledPlugins": {
     "connectors-python@memex-plugins": true,
-    "data-app-static-fastapi@memex-plugins": true
+    "data-app-html-python@memex-plugins": true
   }
 }
