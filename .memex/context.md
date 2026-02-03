@@ -1,3 +1,7 @@
+**CRITICAL**: At the start of EVERY conversation, IMMEDIATELY invoke the `data-app-static-fastapi:data-app` skill using the Skill tool to load complete development guidelines.
+
+---
+
 # Application Setup
 - Update the following files to describe current application
 - `pyproject.toml` - `name` and `description`
@@ -83,4 +87,9 @@ Extract:
 Use `os.environ.get("CONNECTORPREFIX_CONNECTOR_ID")` to get the connector ID.
 The `MEMEX_DEPLOYMENT_TOKEN` and `MEMEX_BACKEND_URL` environment variables are auto-injected when the deployment includes OAuth connectors.
 
+# Styling
+App styling is defined in CSS files within the `dist/` directory (e.g., `dist/styles.css`).
 
+Do not modify existing styles unless the user explicitly requests changes.
+
+Keep custom styling minimal and focused on the user's specific requirements.
