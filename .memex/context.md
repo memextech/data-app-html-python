@@ -27,6 +27,25 @@ git remote add origin https://[GITHUB_CONNECTOR_TOKEN]@github.com/[REPO-OWNER]/[
 1. **ALWAYS check this context.md file before implementing any feature**
 2. **NEVER implement custom solutions for patterns documented here**
 
+## Skills - MANDATORY USAGE
+
+**BLOCKING REQUIREMENT**: When implementing data connectors, you MUST use the appropriate skill as your FIRST action.
+
+### Connector Skills (discover at runtime):
+Before implementing a data connector, **check what skills are currently available** and use the matching connector skill for the requested data source.
+
+### How to Use Skills:
+1. When user requests a connector integration, IMMEDIATELY invoke the relevant skill
+2. DO NOT write any implementation code before invoking the skill
+3. Let the skill guide the implementation pattern
+
+### Why Use Skills:
+- Ensures standardized, tested patterns
+- Includes proper error handling
+- Uses correct secret management
+- Follows best practices for each connector type
+- Prevents manual implementation errors
+
 ## Data Source Implementation - MANDATORY PATTERN
 
 ### When implementing ANY data source:
