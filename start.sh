@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Start script for local FastAPI development
+# Start script for local HTML + Python Data App development
 
 set -e  # Exit on error
 
