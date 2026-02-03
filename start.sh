@@ -7,7 +7,7 @@ set -e  # Exit on error
 # Set default port
 APP_PORT=${APP_PORT:-3001}
 
-echo "Starting FastAPI + Static HTML App..."
+echo "Starting HTML + Python Data App..."
 
 # Sync dependencies from pyproject.toml
 echo "Syncing dependencies..."
