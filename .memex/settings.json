@@ -1,7 +1,0 @@
-{
-  "enabledPlugins": {
-    "connectors-python@memex-plugins": true,
-    "data-app-html-python@memex-plugins": true,
-    "frontend-design@memex-plugins": true
-  }
-}
