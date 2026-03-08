@@ -1,5 +1,5 @@
 **CRITICAL**: At the start of EVERY conversation, IMMEDIATELY invoke these skills using the Skill tool to load development guidelines:
-- `data-app-html-python:data-app` — web app architecture, routing, and data source patterns
+- `web-app-html-python:web-app` — web app architecture, routing, and data source patterns
 - `workshop-ai:workshop-ai` — AI capabilities (image generation, AI-powered features, managed connectors)
 
 ## Data Source & AI Implementation - CRITICAL
