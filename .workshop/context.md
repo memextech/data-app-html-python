@@ -1,8 +1,10 @@
-**CRITICAL**: At the start of EVERY conversation, IMMEDIATELY invoke the `data-app-html-python:data-app` skill using the Skill tool to load complete development guidelines.
+**CRITICAL**: At the start of EVERY conversation, IMMEDIATELY invoke these skills using the Skill tool to load development guidelines:
+- `data-app-html-python:data-app` — web app architecture, routing, and data source patterns
+- `workshop-ai:workshop-ai` — AI capabilities (image generation, AI-powered features, managed connectors)
 
-## Data Source Implementation - CRITICAL
+## Data Source & AI Implementation - CRITICAL
 
-**When your task involves ANY connector/data source, invoke the relevant skill before writing any related code.**
+**When your task involves ANY connector, data source, or AI service, invoke the relevant skill before writing any related code.**
 
 1. Check available connectors in system prompt under "Available Connectors"
 2. Invoke using: `Skill` tool with `connectors-python:connector-{type}` format
@@ -10,10 +12,14 @@
 **Examples:**
 - Neon database → invoke `connectors-python:connector-neon`
 - PostgreSQL → invoke `connectors-python:connector-postgresql`
-- OpenAI → invoke `connectors-python:connector-openai`
+- Gemini (AI) → invoke `connectors-python:connector-workshop-gemini`
+- OpenAI → invoke `connectors-python:connector-workshop-openai`
+- Anthropic → invoke `connectors-python:connector-workshop-anthropic`
+
+**For AI tasks** (image generation, chat, content generation), also invoke `workshop-ai:workshop-ai` for patterns on parallel image generation, AI-powered app endpoints, and which models to use.
 
 **DO NOT:**
-- Manually implement database connections
+- Manually implement database connections or AI integrations
 - Write connector code before invoking the skill
 - Guess at connection patterns
 - **Deviate from the skill's code examples** (model names, SDK methods, parameters, patterns) — use them exactly as shown unless the user explicitly requests otherwise
