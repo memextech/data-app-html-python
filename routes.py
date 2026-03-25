@@ -23,7 +23,7 @@ def create_app(static_dir: str) -> FastAPI:
     app = FastAPI()
     app.include_router(api, prefix="/api")
 
-    @app.get("/", response_class=HTMLResponse)
+    @app.api_route("/", methods=["GET", "HEAD"], response_class=HTMLResponse)
     def index(request: Request):
         css_hash = get_file_hash(os.path.join(static_dir, "styles.css"))
         js_hash = get_file_hash(os.path.join(static_dir, "app.js"))
