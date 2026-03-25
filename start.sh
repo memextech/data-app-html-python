@@ -1,20 +1,24 @@
 #!/bin/bash
+set -e
 
-# Start script for local HTML + Python Data App development
-
-set -e  # Exit on error
-
-# Set default port
 APP_PORT=${APP_PORT:-3001}
 
-echo "Starting HTML + Python Data App..."
+# Startup timing
+T0=$(date +%s%3N 2>/dev/null || python3 -c "import time;print(int(time.time()*1000))")
+elapsed() { echo $(( $(date +%s%3N 2>/dev/null || python3 -c "import time;print(int(time.time()*1000))") - T0 )); }
 
-# Sync dependencies from pyproject.toml
-echo "Syncing dependencies..."
-uv sync
+# Skip sync if lockfile unchanged (fast restart)
+UV_HASH=$(md5sum uv.lock 2>/dev/null | cut -d' ' -f1)
+if [ ! -f ".venv/.uv-hash-$UV_HASH" ]; then
+  echo "[+$(elapsed)ms] uv sync starting..."
+  uv sync --compile-bytecode --frozen 2>&1 || uv sync --compile-bytecode 2>&1
+  rm -f .venv/.uv-hash-* 2>/dev/null
+  touch ".venv/.uv-hash-$UV_HASH"
+  echo "[+$(elapsed)ms] uv sync done"
+else
+  echo "[+$(elapsed)ms] uv sync skipped (lockfile unchanged)"
+fi
 
-# Start local development server
-echo "Starting local dev server on http://0.0.0.0:${APP_PORT}"
-echo ""
-uv run uvicorn app:asgi --host 0.0.0.0 --port ${APP_PORT} --reload \
+echo "[+$(elapsed)ms] Starting dev server on http://0.0.0.0:${APP_PORT}"
+exec uv run uvicorn app:asgi --host 0.0.0.0 --port ${APP_PORT} --reload \
   --reload-exclude ".venv" --reload-exclude ".git" --reload-exclude "__pycache__" --reload-exclude "*.pyc"
