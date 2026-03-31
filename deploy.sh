@@ -8,7 +8,7 @@ echo "Deploying to Modal..."
 
 # Sync dependencies
 echo "Syncing dependencies..."
-uv sync
+uv sync --frozen
 
 # Deploy to Modal
 echo "Deploying app.py to Modal..."
