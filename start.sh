@@ -25,5 +25,5 @@ else
 fi
 
 echo "[+$(elapsed)ms] Starting dev server on http://0.0.0.0:${APP_PORT}"
-exec uv run uvicorn app:asgi --host 0.0.0.0 --port ${APP_PORT} --reload \
+exec uv run --frozen uvicorn app:asgi --host 0.0.0.0 --port ${APP_PORT} --reload \
   --reload-exclude ".venv" --reload-exclude ".git" --reload-exclude "__pycache__" --reload-exclude "*.pyc"
