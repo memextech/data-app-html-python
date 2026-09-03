@@ -2,7 +2,7 @@ import hashlib
 import os
 
 from fastapi import FastAPI, APIRouter, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -30,6 +30,12 @@ def create_app(static_dir: str) -> FastAPI:
         return templates.TemplateResponse(
             request, "index.html", {"css_hash": css_hash, "js_hash": js_hash}
         )
+
+    # Crawlers only look at the root path, but StaticFiles is mounted at
+    # /static — without this route the file is unreachable at /robots.txt.
+    @app.get("/robots.txt", include_in_schema=False)
+    def robots():
+        return FileResponse(os.path.join(static_dir, "robots.txt"))
 
     app.mount("/static", StaticFiles(directory=static_dir), name="ui")
     return app
